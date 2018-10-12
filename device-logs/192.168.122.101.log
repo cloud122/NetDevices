@@ -1,0 +1,4273 @@
+-------------------------------------------------------------------------------
+Hostname: 192.168.122.101Fri Oct 12 00:53:40 2018---------------------<---Output Screen--->------------------
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 6 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 6 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+show ip int br 
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            unassigned      YES unset  up                    up      
+Ethernet0/1            unassigned      YES unset  up                    up      
+Ethernet0/2            unassigned      YES unset  up                    up      
+Ethernet0/3            unassigned      YES unset  up                    up      
+Ethernet1/0            unassigned      YES unset  up                    up      
+Ethernet1/1            unassigned      YES unset  up                    up      
+Ethernet1/2            unassigned      YES unset  up                    up      
+Ethernet1/3            unassigned      YES unset  up                    up      
+Ethernet2/0            unassigned      YES unset  up                    up      
+Ethernet2/1            unassigned      YES unset  up                    up      
+Ethernet2/2            unassigned      YES unset  up                    up      
+Ethernet2/3            unassigned      YES unset  up                    up      
+Ethernet3/0            unassigned      YES unset  up                    up      
+Ethernet3/1            unassigned      YES unset  up                    up      
+Ethernet3/2            unassigned      YES unset  up                    up      
+Ethernet3/3            unassigned      YES unset  up                    up      
+Vlan1                  192.168.122.101 YES NVRAM  up                    up      
+
+
+-------------------------------------------------------------------------------
+Hostname: 192.168.122.101-----------------Fri Oct 12 00:54:35 2018------------------
+------------------------------<---Output Screen--->----------------------------
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+terminal length 0
+
+terminal length 0
+
+show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 7 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 7 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+SW1#show ip int br 
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            unassigned      YES unset  up                    up      
+Ethernet0/1            unassigned      YES unset  up                    up      
+Ethernet0/2            unassigned      YES unset  up                    up      
+Ethernet0/3            unassigned      YES unset  up                    up      
+Ethernet1/0            unassigned      YES unset  up                    up      
+Ethernet1/1            unassigned      YES unset  up                    up      
+Ethernet1/2            unassigned      YES unset  up                    up      
+Ethernet1/3            unassigned      YES unset  up                    up      
+Ethernet2/0            unassigned      YES unset  up                    up      
+Ethernet2/1            unassigned      YES unset  up                    up      
+Ethernet2/2            unassigned      YES unset  up                    up      
+Ethernet2/3            unassigned      YES unset  up                    up      
+Ethernet3/0            unassigned      YES unset  up                    up      
+Ethernet3/1            unassigned      YES unset  up                    up      
+Ethernet3/2            unassigned      YES unset  up                    up      
+Ethernet3/3            unassigned      YES unset  up                    up      
+Vlan1                  192.168.122.101 YES NVRAM  up                    up      
+
+-------------------------------------------------------------------------------
+Hostname: 192.168.122.101------------Fri Oct 12 00:58:39 2018------------------
+------------------------------<---Output Screen--->----------------------------
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+terminal length 0
+
+terminal length 0
+
+show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 11 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+SW1#
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 11 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+SW1#
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+show ip int br 
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            unassigned      YES unset  up                    up      
+Ethernet0/1            unassigned      YES unset  up                    up      
+Ethernet0/2            unassigned      YES unset  up                    up      
+Ethernet0/3            unassigned      YES unset  up                    up      
+Ethernet1/0            unassigned      YES unset  up                    up      
+Ethernet1/1            unassigned      YES unset  up                    up      
+Ethernet1/2            unassigned      YES unset  up                    up      
+Ethernet1/3            unassigned      YES unset  up                    up      
+Ethernet2/0            unassigned      YES unset  up                    up      
+Ethernet2/1            unassigned      YES unset  up                    up      
+Ethernet2/2            unassigned      YES unset  up                    up      
+Ethernet2/3            unassigned      YES unset  up                    up      
+Ethernet3/0            unassigned      YES unset  up                    up      
+Ethernet3/1            unassigned      YES unset  up                    up      
+Ethernet3/2            unassigned      YES unset  up                    up      
+Ethernet3/3            unassigned      YES unset  up                    up      
+Vlan1                  192.168.122.101 YES NVRAM  up                    up      
+SW1#
+
+-------------------------------------------------------------------------------
+Hostname: 192.168.122.101------------Fri Oct 12 00:59:36 2018------------------
+------------------------------<---Output Screen--->----------------------------
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+terminal length 0
+
+terminal length 0
+
+show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 12 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 12 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+-------------------------------------------------------------------------------
+Hostname: 192.168.122.101------------Fri Oct 12 01:00:10 2018------------------
+------------------------------<---Output Screen--->----------------------------
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 13 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 13 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+
+
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+
+
+SW1#show ip int br 
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            unassigned      YES unset  up                    up      
+Ethernet0/1            unassigned      YES unset  up                    up      
+Ethernet0/2            unassigned      YES unset  up                    up      
+Ethernet0/3            unassigned      YES unset  up                    up      
+Ethernet1/0            unassigned      YES unset  up                    up      
+Ethernet1/1            unassigned      YES unset  up                    up      
+Ethernet1/2            unassigned      YES unset  up                    up      
+Ethernet1/3            unassigned      YES unset  up                    up      
+Ethernet2/0            unassigned      YES unset  up                    up      
+Ethernet2/1            unassigned      YES unset  up                    up      
+Ethernet2/2            unassigned      YES unset  up                    up      
+Ethernet2/3            unassigned      YES unset  up                    up      
+Ethernet3/0            unassigned      YES unset  up                    up      
+Ethernet3/1            unassigned      YES unset  up                    up      
+Ethernet3/2            unassigned      YES unset  up                    up      
+Ethernet3/3            unassigned      YES unset  up                    up      
+Vlan1                  192.168.122.101 YES NVRAM  up                    up      
+SW1#
+
+-------------------------------------------------------------------------------
+Hostname: 192.168.122.101------------Fri Oct 12 01:01:03 2018------------------
+------------------------------<---Output Screen--->----------------------------
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 14 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 14 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+show ip int br 
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            unassigned      YES unset  up                    up      
+Ethernet0/1            unassigned      YES unset  up                    up      
+Ethernet0/2            unassigned      YES unset  up                    up      
+Ethernet0/3            unassigned      YES unset  up                    up      
+Ethernet1/0            unassigned      YES unset  up                    up      
+Ethernet1/1            unassigned      YES unset  up                    up      
+Ethernet1/2            unassigned      YES unset  up                    up      
+Ethernet1/3            unassigned      YES unset  up                    up      
+Ethernet2/0            unassigned      YES unset  up                    up      
+Ethernet2/1            unassigned      YES unset  up                    up      
+Ethernet2/2            unassigned      YES unset  up                    up      
+Ethernet2/3            unassigned      YES unset  up                    up      
+Ethernet3/0            unassigned      YES unset  up                    up      
+Ethernet3/1            unassigned      YES unset  up                    up      
+Ethernet3/2            unassigned      YES unset  up                    up      
+Ethernet3/3            unassigned      YES unset  up                    up      
+Vlan1                  192.168.122.101 YES NVRAM  up                    up      
+SW1#
+
+-------------------------------------------------------------------------------
+Hostname: 192.168.122.101------------Fri Oct 12 01:01:29 2018------------------
+------------------------------<---Output Screen--->----------------------------
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 14 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+SW1#
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 14 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+SW1#
+
+show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+show ip int br 
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            unassigned      YES unset  up                    up      
+Ethernet0/1            unassigned      YES unset  up                    up      
+Ethernet0/2            unassigned      YES unset  up                    up      
+Ethernet0/3            unassigned      YES unset  up                    up      
+Ethernet1/0            unassigned      YES unset  up                    up      
+Ethernet1/1            unassigned      YES unset  up                    up      
+Ethernet1/2            unassigned      YES unset  up                    up      
+Ethernet1/3            unassigned      YES unset  up                    up      
+Ethernet2/0            unassigned      YES unset  up                    up      
+Ethernet2/1            unassigned      YES unset  up                    up      
+Ethernet2/2            unassigned      YES unset  up                    up      
+Ethernet2/3            unassigned      YES unset  up                    up      
+Ethernet3/0            unassigned      YES unset  up                    up      
+Ethernet3/1            unassigned      YES unset  up                    up      
+Ethernet3/2            unassigned      YES unset  up                    up      
+Ethernet3/3            unassigned      YES unset  up                    up      
+Vlan1                  192.168.122.101 YES NVRAM  up                    up      
+SW1#
+
+-------------------------------------------------------------------------------
+Hostname: 192.168.122.101------------Fri Oct 12 01:02:01 2018------------------
+------------------------------<---Output Screen--->----------------------------
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 15 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+SW1#
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 15 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+SW1#
+
+show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+show ip int br 
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            unassigned      YES unset  up                    up      
+Ethernet0/1            unassigned      YES unset  up                    up      
+Ethernet0/2            unassigned      YES unset  up                    up      
+Ethernet0/3            unassigned      YES unset  up                    up      
+Ethernet1/0            unassigned      YES unset  up                    up      
+Ethernet1/1            unassigned      YES unset  up                    up      
+Ethernet1/2            unassigned      YES unset  up                    up      
+Ethernet1/3            unassigned      YES unset  up                    up      
+Ethernet2/0            unassigned      YES unset  up                    up      
+Ethernet2/1            unassigned      YES unset  up                    up      
+Ethernet2/2            unassigned      YES unset  up                    up      
+Ethernet2/3            unassigned      YES unset  up                    up      
+Ethernet3/0            unassigned      YES unset  up                    up      
+Ethernet3/1            unassigned      YES unset  up                    up      
+Ethernet3/2            unassigned      YES unset  up                    up      
+Ethernet3/3            unassigned      YES unset  up                    up      
+Vlan1                  192.168.122.101 YES NVRAM  up                    up      
+
+
+-------------------------------------------------------------------------------
+Hostname: 192.168.122.101------------Fri Oct 12 01:02:27 2018------------------
+------------------------------<---Output Screen--->----------------------------
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 15 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 15 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+
+
+
+show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+SW1#show ip int br 
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            unassigned      YES unset  up                    up      
+Ethernet0/1            unassigned      YES unset  up                    up      
+Ethernet0/2            unassigned      YES unset  up                    up      
+Ethernet0/3            unassigned      YES unset  up                    up      
+Ethernet1/0            unassigned      YES unset  up                    up      
+Ethernet1/1            unassigned      YES unset  up                    up      
+Ethernet1/2            unassigned      YES unset  up                    up      
+Ethernet1/3            unassigned      YES unset  up                    up      
+Ethernet2/0            unassigned      YES unset  up                    up      
+Ethernet2/1            unassigned      YES unset  up                    up      
+Ethernet2/2            unassigned      YES unset  up                    up      
+Ethernet2/3            unassigned      YES unset  up                    up      
+Ethernet3/0            unassigned      YES unset  up                    up      
+Ethernet3/1            unassigned      YES unset  up                    up      
+Ethernet3/2            unassigned      YES unset  up                    up      
+Ethernet3/3            unassigned      YES unset  up                    up      
+Vlan1                  192.168.122.101 YES NVRAM  up                    up      
+
+
+-------------------------------------------------------------------------------
+Hostname: 192.168.122.101------------Fri Oct 12 01:17:56 2018------------------
+------------------------------<---Output Screen--->----------------------------
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+terminal length 0
+
+terminal length 0
+
+show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 31 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 31 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+SW1#show ip int br 
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            unassigned      YES unset  up                    up      
+Ethernet0/1            unassigned      YES unset  up                    up      
+Ethernet0/2            unassigned      YES unset  up                    up      
+Ethernet0/3            unassigned      YES unset  up                    up      
+Ethernet1/0            unassigned      YES unset  up                    up      
+Ethernet1/1            unassigned      YES unset  up                    up      
+Ethernet1/2            unassigned      YES unset  up                    up      
+Ethernet1/3            unassigned      YES unset  up                    up      
+Ethernet2/0            unassigned      YES unset  up                    up      
+Ethernet2/1            unassigned      YES unset  up                    up      
+Ethernet2/2            unassigned      YES unset  up                    up      
+Ethernet2/3            unassigned      YES unset  up                    up      
+Ethernet3/0            unassigned      YES unset  up                    up      
+Ethernet3/1            unassigned      YES unset  up                    up      
+Ethernet3/2            unassigned      YES unset  up                    up      
+Ethernet3/3            unassigned      YES unset  up                    up      
+Vlan1                  192.168.122.101 YES NVRAM  up                    up      
+
+-------------------------------------------------------------------------------
+Hostname: 192.168.122.101------------Fri Oct 12 01:34:28 2018------------------
+------------------------------<---Output Screen--->----------------------------
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 47 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 2 hours, 47 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+
+
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+SW1#show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+show ip int br 
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            unassigned      YES unset  up                    up      
+Ethernet0/1            unassigned      YES unset  up                    up      
+Ethernet0/2            unassigned      YES unset  up                    up      
+Ethernet0/3            unassigned      YES unset  up                    up      
+Ethernet1/0            unassigned      YES unset  up                    up      
+Ethernet1/1            unassigned      YES unset  up                    up      
+Ethernet1/2            unassigned      YES unset  up                    up      
+Ethernet1/3            unassigned      YES unset  up                    up      
+Ethernet2/0            unassigned      YES unset  up                    up      
+Ethernet2/1            unassigned      YES unset  up                    up      
+Ethernet2/2            unassigned      YES unset  up                    up      
+Ethernet2/3            unassigned      YES unset  up                    up      
+Ethernet3/0            unassigned      YES unset  up                    up      
+Ethernet3/1            unassigned      YES unset  up                    up      
+Ethernet3/2            unassigned      YES unset  up                    up      
+Ethernet3/3            unassigned      YES unset  up                    up      
+Vlan1                  192.168.122.101 YES NVRAM  up                    up      
+SW1#
+
+-------------------------------------------------------------------------------
+Hostname: 192.168.122.101------------Fri Oct 12 01:58:32 2018------------------
+------------------------------<---Output Screen--->----------------------------
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 3 hours, 12 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+SW1#
+
+terminal length 0
+SW1#show ver 
+Cisco IOS Software, Linux Software (I86BI_LINUX_L2-UPK9-M), Experimental Version 15.0(20121031:162848) [dstivers-oct25-2012-golden_spike 103]
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Wed 31-Oct-12 09:42 by dstivers
+
+ROM: Bootstrap program is Linux
+
+ SW1 uptime is 3 hours, 12 minutes
+System returned to ROM by reload at 0
+System image file is "unix:/home/gns3/GNS3/images/IOU/i86bi-linux-l2-upk9-15.0b.bin"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 202485K bytes of memory.
+Processor board ID 2048001
+16 Ethernet interfaces
+16K bytes of NVRAM.
+
+Configuration register is 0x0
+
+SW1#
+
+show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+show run 
+Building configuration...
+
+Current configuration : 2336 bytes
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+enable password cisco
+!
+username georchan password 0 cisco
+no aaa new-model
+clock timezone EST -5
+no ip icmp rate-limit unreachable
+!
+ip cef
+no ip domain-lookup
+ip domain-name ccnp.com
+!
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet1/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1,2
+ switchport mode trunk
+ duplex auto
+!
+interface Ethernet2/0
+ duplex auto
+!
+interface Ethernet2/1
+ duplex auto
+!
+interface Ethernet2/2
+ duplex auto
+!
+interface Ethernet2/3
+ duplex auto
+!
+interface Ethernet3/0
+ duplex auto
+!
+interface Ethernet3/1
+ duplex auto
+!
+interface Ethernet3/2
+ duplex auto
+!
+interface Ethernet3/3
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.122.101 255.255.255.0
+!
+!
+ip forward-protocol nd
+no ip http server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input ssh
+!
+end
+
+SW1#
+
+show ip int br 
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            unassigned      YES unset  up                    up      
+Ethernet0/1            unassigned      YES unset  up                    up      
+Ethernet0/2            unassigned      YES unset  up                    up      
+Ethernet0/3            unassigned      YES unset  up                    up      
+Ethernet1/0            unassigned      YES unset  up                    up      
+Ethernet1/1            unassigned      YES unset  up                    up      
+Ethernet1/2            unassigned      YES unset  up                    up      
+Ethernet1/3            unassigned      YES unset  up                    up      
+Ethernet2/0            unassigned      YES unset  up                    up      
+Ethernet2/1            unassigned      YES unset  up                    up      
+Ethernet2/2            unassigned      YES unset  up                    up      
+Ethernet2/3            unassigned      YES unset  up                    up      
+Ethernet3/0            unassigned      YES unset  up                    up      
+Ethernet3/1            unassigned      YES unset  up                    up      
+Ethernet3/2            unassigned      YES unset  up                    up      
+Ethernet3/3            unassigned      YES unset  up                    up      
+Vlan1                  192.168.122.101 YES NVRAM  up                    up      
+SW1#
+

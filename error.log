@@ -1,0 +1,618 @@
+2018-10-12 00:01:04,955:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+10/12/2018 12:01:04 AM Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:01:04,955:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+10/12/2018 12:01:04 AM Connection Timeout or unknown host on: 10.6.456.3
+10/12/2018 12:01:04 AM starting thread (client mode): 0xc13da410L
+10/12/2018 12:01:04 AM Local version/idstring: SSH-2.0-paramiko_2.4.2
+10/12/2018 12:01:04 AM Remote version/idstring: SSH-1.99-Cisco-1.25
+10/12/2018 12:01:04 AM Connected (version 1.99, client Cisco-1.25)
+10/12/2018 12:01:04 AM kex algos:[u'diffie-hellman-group1-sha1'] server key:[u'ssh-rsa'] client encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] server encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] client mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] server mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] client compress:[u'none'] server compress:[u'none'] client lang:[u''] server lang:[u''] kex follows?False
+10/12/2018 12:01:04 AM Kex agreed: diffie-hellman-group1-sha1
+10/12/2018 12:01:04 AM HostKey agreed: ssh-rsa
+10/12/2018 12:01:04 AM Cipher agreed: aes128-cbc
+10/12/2018 12:01:04 AM MAC agreed: hmac-sha1
+10/12/2018 12:01:04 AM Compression agreed: none
+10/12/2018 12:01:05 AM kex engine KexGroup1 specified hash_algo <built-in function openssl_sha1>
+10/12/2018 12:01:05 AM Switch to new keys ...
+10/12/2018 12:01:05 AM Adding ssh-rsa host key for 192.168.122.101: ee1aaf6b685b8f92be981337e628d323
+10/12/2018 12:01:05 AM userauth is OK
+10/12/2018 12:01:05 AM Authentication (password) successful!
+10/12/2018 12:01:05 AM [chan 0] Max packet in: 32768 bytes
+10/12/2018 12:01:05 AM [chan 0] Max packet out: 4096 bytes
+10/12/2018 12:01:05 AM Secsh channel 0 opened.
+10/12/2018 12:01:05 AM [chan 0] Sesch channel 0 request ok
+10/12/2018 12:01:05 AM [chan 0] Sesch channel 0 request ok
+2018-10-12 00:01:05,324:DEBUG:__main__:Connection established on: 192.168.122.101
+10/12/2018 12:01:05 AM Connection established on: 192.168.122.101
+10/12/2018 12:01:05 AM [chan 0] EOF sent (0)
+10/12/2018 12:01:05 AM starting thread (client mode): 0xc13da510L
+10/12/2018 12:01:05 AM Local version/idstring: SSH-2.0-paramiko_2.4.2
+10/12/2018 12:01:05 AM Remote version/idstring: SSH-1.99-Cisco-1.25
+10/12/2018 12:01:05 AM Connected (version 1.99, client Cisco-1.25)
+10/12/2018 12:01:05 AM kex algos:[u'diffie-hellman-group1-sha1'] server key:[u'ssh-rsa'] client encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] server encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] client mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] server mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] client compress:[u'none'] server compress:[u'none'] client lang:[u''] server lang:[u''] kex follows?False
+10/12/2018 12:01:05 AM Kex agreed: diffie-hellman-group1-sha1
+10/12/2018 12:01:05 AM HostKey agreed: ssh-rsa
+10/12/2018 12:01:05 AM Cipher agreed: aes128-cbc
+10/12/2018 12:01:05 AM MAC agreed: hmac-sha1
+10/12/2018 12:01:05 AM Compression agreed: none
+10/12/2018 12:01:05 AM kex engine KexGroup1 specified hash_algo <built-in function openssl_sha1>
+10/12/2018 12:01:05 AM Switch to new keys ...
+10/12/2018 12:01:05 AM [chan 0] EOF received (0)
+10/12/2018 12:01:05 AM Adding ssh-rsa host key for 192.168.122.102: 6923937b0dd9ea7c35dbf6ab9f7c65be
+10/12/2018 12:01:05 AM EOF in transport thread
+10/12/2018 12:01:05 AM userauth is OK
+10/12/2018 12:01:05 AM Authentication (password) successful!
+10/12/2018 12:01:05 AM [chan 0] Max packet in: 32768 bytes
+10/12/2018 12:01:05 AM [chan 0] Max packet out: 4096 bytes
+10/12/2018 12:01:05 AM Secsh channel 0 opened.
+10/12/2018 12:01:05 AM [chan 0] Sesch channel 0 request ok
+10/12/2018 12:01:05 AM [chan 0] Sesch channel 0 request ok
+2018-10-12 00:01:05,944:DEBUG:__main__:Connection established on: 192.168.122.102
+10/12/2018 12:01:05 AM Connection established on: 192.168.122.102
+10/12/2018 12:01:06 AM [chan 0] EOF sent (0)
+10/12/2018 12:01:06 AM starting thread (client mode): 0xc13da3d0L
+10/12/2018 12:01:06 AM Local version/idstring: SSH-2.0-paramiko_2.4.2
+10/12/2018 12:01:06 AM Remote version/idstring: SSH-1.99-Cisco-1.25
+10/12/2018 12:01:06 AM Connected (version 1.99, client Cisco-1.25)
+10/12/2018 12:01:06 AM kex algos:[u'diffie-hellman-group1-sha1'] server key:[u'ssh-rsa'] client encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] server encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] client mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] server mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] client compress:[u'none'] server compress:[u'none'] client lang:[u''] server lang:[u''] kex follows?False
+10/12/2018 12:01:06 AM Kex agreed: diffie-hellman-group1-sha1
+10/12/2018 12:01:06 AM HostKey agreed: ssh-rsa
+10/12/2018 12:01:06 AM Cipher agreed: aes128-cbc
+10/12/2018 12:01:06 AM MAC agreed: hmac-sha1
+10/12/2018 12:01:06 AM Compression agreed: none
+10/12/2018 12:01:06 AM [chan 0] EOF received (0)
+10/12/2018 12:01:06 AM EOF in transport thread
+10/12/2018 12:01:06 AM kex engine KexGroup1 specified hash_algo <built-in function openssl_sha1>
+10/12/2018 12:01:06 AM Switch to new keys ...
+10/12/2018 12:01:06 AM Adding ssh-rsa host key for 192.168.122.103: 931ec754f7a60585c9a8c259045d3cfd
+10/12/2018 12:01:06 AM userauth is OK
+10/12/2018 12:01:06 AM Authentication (password) successful!
+10/12/2018 12:01:06 AM [chan 0] Max packet in: 32768 bytes
+10/12/2018 12:01:06 AM [chan 0] Max packet out: 4096 bytes
+10/12/2018 12:01:06 AM Secsh channel 0 opened.
+10/12/2018 12:01:06 AM [chan 0] Sesch channel 0 request ok
+10/12/2018 12:01:06 AM [chan 0] Sesch channel 0 request ok
+2018-10-12 00:01:06,715:DEBUG:__main__:Connection established on: 192.168.122.103
+10/12/2018 12:01:06 AM Connection established on: 192.168.122.103
+10/12/2018 12:01:07 AM [chan 0] EOF sent (0)
+10/12/2018 12:01:07 AM starting thread (client mode): 0xc04be650L
+10/12/2018 12:01:07 AM Local version/idstring: SSH-2.0-paramiko_2.4.2
+10/12/2018 12:01:07 AM Remote version/idstring: SSH-1.99-Cisco-1.25
+10/12/2018 12:01:07 AM Connected (version 1.99, client Cisco-1.25)
+10/12/2018 12:01:07 AM kex algos:[u'diffie-hellman-group1-sha1'] server key:[u'ssh-rsa'] client encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] server encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] client mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] server mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] client compress:[u'none'] server compress:[u'none'] client lang:[u''] server lang:[u''] kex follows?False
+10/12/2018 12:01:07 AM Kex agreed: diffie-hellman-group1-sha1
+10/12/2018 12:01:07 AM HostKey agreed: ssh-rsa
+10/12/2018 12:01:07 AM Cipher agreed: aes128-cbc
+10/12/2018 12:01:07 AM MAC agreed: hmac-sha1
+10/12/2018 12:01:07 AM Compression agreed: none
+10/12/2018 12:01:07 AM kex engine KexGroup1 specified hash_algo <built-in function openssl_sha1>
+10/12/2018 12:01:07 AM Switch to new keys ...
+10/12/2018 12:01:07 AM Adding ssh-rsa host key for 192.168.122.104: e04172b4c0f336187a8b21772abdf0be
+10/12/2018 12:01:07 AM [chan 0] EOF received (0)
+10/12/2018 12:01:07 AM EOF in transport thread
+10/12/2018 12:01:07 AM userauth is OK
+10/12/2018 12:01:07 AM Authentication (password) successful!
+10/12/2018 12:01:07 AM [chan 0] Max packet in: 32768 bytes
+10/12/2018 12:01:07 AM [chan 0] Max packet out: 4096 bytes
+10/12/2018 12:01:07 AM Secsh channel 0 opened.
+10/12/2018 12:01:07 AM [chan 0] Sesch channel 0 request ok
+10/12/2018 12:01:07 AM [chan 0] Sesch channel 0 request ok
+2018-10-12 00:01:07,295:DEBUG:__main__:Connection established on: 192.168.122.104
+10/12/2018 12:01:07 AM Connection established on: 192.168.122.104
+10/12/2018 12:01:07 AM [chan 0] EOF sent (0)
+10/12/2018 12:01:07 AM starting thread (client mode): 0xc13da4d0L
+10/12/2018 12:01:07 AM Local version/idstring: SSH-2.0-paramiko_2.4.2
+10/12/2018 12:01:07 AM Remote version/idstring: SSH-1.99-Cisco-1.25
+10/12/2018 12:01:07 AM Connected (version 1.99, client Cisco-1.25)
+10/12/2018 12:01:07 AM kex algos:[u'diffie-hellman-group1-sha1'] server key:[u'ssh-rsa'] client encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] server encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] client mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] server mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] client compress:[u'none'] server compress:[u'none'] client lang:[u''] server lang:[u''] kex follows?False
+10/12/2018 12:01:07 AM Kex agreed: diffie-hellman-group1-sha1
+10/12/2018 12:01:07 AM HostKey agreed: ssh-rsa
+10/12/2018 12:01:07 AM Cipher agreed: aes128-cbc
+10/12/2018 12:01:07 AM MAC agreed: hmac-sha1
+10/12/2018 12:01:07 AM Compression agreed: none
+10/12/2018 12:01:07 AM [chan 0] EOF received (0)
+10/12/2018 12:01:07 AM EOF in transport thread
+10/12/2018 12:01:07 AM kex engine KexGroup1 specified hash_algo <built-in function openssl_sha1>
+10/12/2018 12:01:07 AM Switch to new keys ...
+10/12/2018 12:01:07 AM Adding ssh-rsa host key for 192.168.122.106: 931ec754f7a60585c9a8c259045d3cfd
+10/12/2018 12:01:08 AM userauth is OK
+10/12/2018 12:01:08 AM Authentication (password) successful!
+10/12/2018 12:01:08 AM [chan 0] Max packet in: 32768 bytes
+10/12/2018 12:01:08 AM [chan 0] Max packet out: 4096 bytes
+10/12/2018 12:01:08 AM Secsh channel 0 opened.
+10/12/2018 12:01:08 AM [chan 0] Sesch channel 0 request ok
+10/12/2018 12:01:08 AM [chan 0] Sesch channel 0 request ok
+2018-10-12 00:01:08,043:DEBUG:__main__:Connection established on: 192.168.122.106
+10/12/2018 12:01:08 AM Connection established on: 192.168.122.106
+10/12/2018 12:01:08 AM [chan 0] EOF sent (0)
+10/12/2018 12:01:08 AM starting thread (client mode): 0xc04e5150L
+10/12/2018 12:01:08 AM Local version/idstring: SSH-2.0-paramiko_2.4.2
+10/12/2018 12:01:08 AM Remote version/idstring: SSH-1.99-Cisco-1.25
+10/12/2018 12:01:08 AM Connected (version 1.99, client Cisco-1.25)
+10/12/2018 12:01:08 AM kex algos:[u'diffie-hellman-group1-sha1'] server key:[u'ssh-rsa'] client encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] server encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] client mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] server mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] client compress:[u'none'] server compress:[u'none'] client lang:[u''] server lang:[u''] kex follows?False
+10/12/2018 12:01:08 AM Kex agreed: diffie-hellman-group1-sha1
+10/12/2018 12:01:08 AM HostKey agreed: ssh-rsa
+10/12/2018 12:01:08 AM Cipher agreed: aes128-cbc
+10/12/2018 12:01:08 AM MAC agreed: hmac-sha1
+10/12/2018 12:01:08 AM Compression agreed: none
+10/12/2018 12:01:08 AM kex engine KexGroup1 specified hash_algo <built-in function openssl_sha1>
+10/12/2018 12:01:08 AM Switch to new keys ...
+10/12/2018 12:01:08 AM [chan 0] EOF received (0)
+10/12/2018 12:01:08 AM Adding ssh-rsa host key for 192.168.122.107: 931ec754f7a60585c9a8c259045d3cfd
+10/12/2018 12:01:08 AM EOF in transport thread
+10/12/2018 12:01:08 AM userauth is OK
+10/12/2018 12:01:08 AM Authentication (password) successful!
+10/12/2018 12:01:08 AM [chan 0] Max packet in: 32768 bytes
+10/12/2018 12:01:08 AM [chan 0] Max packet out: 4096 bytes
+10/12/2018 12:01:08 AM Secsh channel 0 opened.
+10/12/2018 12:01:08 AM [chan 0] Sesch channel 0 request ok
+10/12/2018 12:01:08 AM [chan 0] Sesch channel 0 request ok
+2018-10-12 00:01:08,662:DEBUG:__main__:Connection established on: 192.168.122.107
+10/12/2018 12:01:08 AM Connection established on: 192.168.122.107
+10/12/2018 12:01:08 AM [chan 0] EOF sent (0)
+10/12/2018 12:01:08 AM starting thread (client mode): 0xc04be490L
+10/12/2018 12:01:08 AM Local version/idstring: SSH-2.0-paramiko_2.4.2
+10/12/2018 12:01:08 AM Remote version/idstring: SSH-1.99-Cisco-1.25
+10/12/2018 12:01:08 AM Connected (version 1.99, client Cisco-1.25)
+10/12/2018 12:01:08 AM kex algos:[u'diffie-hellman-group1-sha1'] server key:[u'ssh-rsa'] client encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] server encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] client mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] server mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] client compress:[u'none'] server compress:[u'none'] client lang:[u''] server lang:[u''] kex follows?False
+10/12/2018 12:01:08 AM Kex agreed: diffie-hellman-group1-sha1
+10/12/2018 12:01:08 AM HostKey agreed: ssh-rsa
+10/12/2018 12:01:08 AM Cipher agreed: aes128-cbc
+10/12/2018 12:01:08 AM MAC agreed: hmac-sha1
+10/12/2018 12:01:08 AM Compression agreed: none
+10/12/2018 12:01:08 AM kex engine KexGroup1 specified hash_algo <built-in function openssl_sha1>
+10/12/2018 12:01:08 AM Switch to new keys ...
+10/12/2018 12:01:09 AM Adding ssh-rsa host key for 192.168.122.108: 931ec754f7a60585c9a8c259045d3cfd
+10/12/2018 12:01:09 AM [chan 0] EOF received (0)
+10/12/2018 12:01:09 AM EOF in transport thread
+10/12/2018 12:01:09 AM userauth is OK
+10/12/2018 12:01:09 AM Authentication (password) successful!
+10/12/2018 12:01:09 AM [chan 0] Max packet in: 32768 bytes
+10/12/2018 12:01:09 AM [chan 0] Max packet out: 4096 bytes
+10/12/2018 12:01:09 AM Secsh channel 0 opened.
+10/12/2018 12:01:09 AM [chan 0] Sesch channel 0 request ok
+10/12/2018 12:01:09 AM [chan 0] Sesch channel 0 request ok
+2018-10-12 00:01:09,237:DEBUG:__main__:Connection established on: 192.168.122.108
+10/12/2018 12:01:09 AM Connection established on: 192.168.122.108
+10/12/2018 12:01:09 AM [chan 0] EOF sent (0)
+10/12/2018 12:01:09 AM starting thread (client mode): 0xc13da510L
+10/12/2018 12:01:09 AM Local version/idstring: SSH-2.0-paramiko_2.4.2
+10/12/2018 12:01:09 AM Remote version/idstring: SSH-1.99-Cisco-1.25
+10/12/2018 12:01:09 AM Connected (version 1.99, client Cisco-1.25)
+10/12/2018 12:01:09 AM kex algos:[u'diffie-hellman-group1-sha1'] server key:[u'ssh-rsa'] client encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] server encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] client mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] server mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] client compress:[u'none'] server compress:[u'none'] client lang:[u''] server lang:[u''] kex follows?False
+10/12/2018 12:01:09 AM Kex agreed: diffie-hellman-group1-sha1
+10/12/2018 12:01:09 AM HostKey agreed: ssh-rsa
+10/12/2018 12:01:09 AM Cipher agreed: aes128-cbc
+10/12/2018 12:01:09 AM MAC agreed: hmac-sha1
+10/12/2018 12:01:09 AM Compression agreed: none
+10/12/2018 12:01:09 AM kex engine KexGroup1 specified hash_algo <built-in function openssl_sha1>
+10/12/2018 12:01:09 AM Switch to new keys ...
+10/12/2018 12:01:09 AM Adding ssh-rsa host key for 192.168.122.109: 931ec754f7a60585c9a8c259045d3cfd
+10/12/2018 12:01:09 AM [chan 0] EOF received (0)
+10/12/2018 12:01:09 AM EOF in transport thread
+10/12/2018 12:01:09 AM userauth is OK
+10/12/2018 12:01:09 AM Authentication (password) successful!
+10/12/2018 12:01:09 AM [chan 0] Max packet in: 32768 bytes
+10/12/2018 12:01:09 AM [chan 0] Max packet out: 4096 bytes
+10/12/2018 12:01:09 AM Secsh channel 0 opened.
+10/12/2018 12:01:09 AM [chan 0] Sesch channel 0 request ok
+10/12/2018 12:01:09 AM [chan 0] Sesch channel 0 request ok
+2018-10-12 00:01:09,839:DEBUG:__main__:Connection established on: 192.168.122.109
+10/12/2018 12:01:09 AM Connection established on: 192.168.122.109
+10/12/2018 12:01:10 AM [chan 0] EOF sent (0)
+10/12/2018 12:01:10 AM starting thread (client mode): 0xc13dab90L
+10/12/2018 12:01:10 AM Local version/idstring: SSH-2.0-paramiko_2.4.2
+10/12/2018 12:01:10 AM Remote version/idstring: SSH-1.99-Cisco-1.25
+10/12/2018 12:01:10 AM Connected (version 1.99, client Cisco-1.25)
+10/12/2018 12:01:10 AM kex algos:[u'diffie-hellman-group1-sha1'] server key:[u'ssh-rsa'] client encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] server encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] client mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] server mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] client compress:[u'none'] server compress:[u'none'] client lang:[u''] server lang:[u''] kex follows?False
+10/12/2018 12:01:10 AM Kex agreed: diffie-hellman-group1-sha1
+10/12/2018 12:01:10 AM HostKey agreed: ssh-rsa
+10/12/2018 12:01:10 AM Cipher agreed: aes128-cbc
+10/12/2018 12:01:10 AM MAC agreed: hmac-sha1
+10/12/2018 12:01:10 AM Compression agreed: none
+10/12/2018 12:01:10 AM kex engine KexGroup1 specified hash_algo <built-in function openssl_sha1>
+10/12/2018 12:01:10 AM Switch to new keys ...
+10/12/2018 12:01:10 AM Adding ssh-rsa host key for 192.168.122.110: 931ec754f7a60585c9a8c259045d3cfd
+10/12/2018 12:01:10 AM [chan 0] EOF received (0)
+10/12/2018 12:01:10 AM EOF in transport thread
+10/12/2018 12:01:10 AM userauth is OK
+10/12/2018 12:01:10 AM Authentication (password) successful!
+10/12/2018 12:01:10 AM [chan 0] Max packet in: 32768 bytes
+10/12/2018 12:01:10 AM [chan 0] Max packet out: 4096 bytes
+10/12/2018 12:01:10 AM Secsh channel 0 opened.
+10/12/2018 12:01:10 AM [chan 0] Sesch channel 0 request ok
+10/12/2018 12:01:10 AM [chan 0] Sesch channel 0 request ok
+2018-10-12 00:01:10,410:DEBUG:__main__:Connection established on: 192.168.122.110
+10/12/2018 12:01:10 AM Connection established on: 192.168.122.110
+10/12/2018 12:01:10 AM [chan 0] EOF sent (0)
+10/12/2018 12:01:10 AM starting thread (client mode): 0xc04be4d0L
+10/12/2018 12:01:10 AM Local version/idstring: SSH-2.0-paramiko_2.4.2
+10/12/2018 12:01:10 AM Remote version/idstring: SSH-1.99-Cisco-1.25
+10/12/2018 12:01:10 AM Connected (version 1.99, client Cisco-1.25)
+10/12/2018 12:01:10 AM kex algos:[u'diffie-hellman-group1-sha1'] server key:[u'ssh-rsa'] client encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] server encrypt:[u'aes128-cbc', u'3des-cbc', u'aes192-cbc', u'aes256-cbc'] client mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] server mac:[u'hmac-sha1', u'hmac-sha1-96', u'hmac-md5', u'hmac-md5-96'] client compress:[u'none'] server compress:[u'none'] client lang:[u''] server lang:[u''] kex follows?False
+10/12/2018 12:01:10 AM Kex agreed: diffie-hellman-group1-sha1
+10/12/2018 12:01:10 AM HostKey agreed: ssh-rsa
+10/12/2018 12:01:10 AM Cipher agreed: aes128-cbc
+10/12/2018 12:01:10 AM MAC agreed: hmac-sha1
+10/12/2018 12:01:10 AM Compression agreed: none
+10/12/2018 12:01:10 AM kex engine KexGroup1 specified hash_algo <built-in function openssl_sha1>
+10/12/2018 12:01:10 AM Switch to new keys ...
+10/12/2018 12:01:10 AM Adding ssh-rsa host key for 192.168.122.105: 83573fd76b8d7db0d16d13207a6ee877
+10/12/2018 12:01:10 AM [chan 0] EOF received (0)
+10/12/2018 12:01:10 AM EOF in transport thread
+10/12/2018 12:01:11 AM userauth is OK
+10/12/2018 12:01:11 AM Authentication (password) successful!
+10/12/2018 12:01:11 AM [chan 0] Max packet in: 32768 bytes
+10/12/2018 12:01:11 AM [chan 0] Max packet out: 4096 bytes
+10/12/2018 12:01:11 AM Secsh channel 0 opened.
+10/12/2018 12:01:11 AM [chan 0] Sesch channel 0 request ok
+10/12/2018 12:01:11 AM [chan 0] Sesch channel 0 request ok
+2018-10-12 00:01:11,024:DEBUG:__main__:Connection established on: 192.168.122.105
+10/12/2018 12:01:11 AM Connection established on: 192.168.122.105
+10/12/2018 12:01:26 AM [chan 0] EOF sent (0)
+10/12/2018 12:01:26 AM EOF in transport thread
+2018-10-12 00:01:26,093:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:01:26,093:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+10/12/2018 12:01:26 AM 
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:01:26,095:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:01:26,095:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+10/12/2018 12:01:26 AM 
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:40:42,652:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:40:42,652:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:42:01,695:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:42:01,695:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:42:01,972:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:42:37,505:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:42:37,505:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:42:37,817:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:42:46,507:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:42:46,507:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:42:46,824:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:43:20,521:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:43:20,522:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:43:20,882:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:43:55,081:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:43:55,081:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:43:55,397:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:44:21,776:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:44:21,776:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:44:22,093:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:44:37,818:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:44:37,818:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:44:38,134:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:44:54,139:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:44:54,139:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:44:54,448:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:45:01,301:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:45:01,301:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:45:01,615:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:45:29,660:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:45:29,660:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:45:29,975:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:45:56,337:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:45:56,338:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:45:56,669:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:46:10,636:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:46:10,636:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:46:11,117:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:46:17,624:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:46:17,625:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:46:17,939:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:46:18,557:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 00:46:19,157:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 00:46:19,785:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 00:46:20,587:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 00:46:21,234:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 00:46:21,851:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 00:46:22,442:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 00:46:22,947:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 00:46:23,529:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 00:46:38,597:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:46:38,597:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:46:38,599:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:46:38,599:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:49:43,471:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:49:43,471:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:49:43,787:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:49:44,392:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 00:49:45,011:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 00:50:00,303:ERROR:__main__:Connection Timeout or unknown host on: 192.168.122.104
+2018-10-12 00:50:00,303:ERROR:__main__:Connection Timeout or unknown host on: 192.168.122.104
+2018-10-12 00:50:00,304:DEBUG:__main__:Connection Timeout or unknown host on: 192.168.122.104
+2018-10-12 00:50:00,304:DEBUG:__main__:Connection Timeout or unknown host on: 192.168.122.104
+2018-10-12 00:50:00,628:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 00:50:00,628:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 00:50:01,259:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 00:50:01,259:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 00:50:01,873:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 00:50:01,873:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 00:50:02,403:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 00:50:02,403:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 00:50:03,200:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 00:50:03,200:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 00:50:03,830:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 00:50:03,830:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 00:50:18,897:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:50:18,897:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:50:18,897:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:50:18,900:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:50:18,900:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:50:18,900:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:53:39,559:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:53:39,560:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:53:39,864:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:53:40,177:ERROR:__main__:Path created:  ./device-logs/
+2018-10-12 00:53:40,177:ERROR:__main__:Path created:  ./device-logs/
+2018-10-12 00:53:40,178:DEBUG:__main__:Path created:  ./device-logs/
+2018-10-12 00:53:40,178:DEBUG:__main__:Path created:  ./device-logs/
+2018-10-12 00:53:40,497:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 00:53:40,497:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 00:53:41,131:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 00:53:41,131:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 00:53:41,745:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 00:53:41,745:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 00:53:42,296:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 00:53:42,296:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 00:53:42,824:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 00:53:42,824:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 00:53:43,417:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 00:53:43,417:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 00:53:44,040:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 00:53:44,040:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 00:53:44,673:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 00:53:44,673:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 00:53:45,294:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 00:53:45,294:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 00:54:00,364:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:54:00,364:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:54:00,364:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:54:00,366:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:54:00,366:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:54:00,366:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:54:35,302:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:54:35,303:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:54:35,693:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:54:36,273:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 00:54:36,861:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 00:54:37,446:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 00:54:38,063:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 00:54:38,671:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 00:54:39,275:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 00:54:40,069:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 00:54:40,873:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 00:54:41,383:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 00:54:56,453:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:54:56,453:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:54:56,455:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:54:56,455:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:58:39,035:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:58:39,035:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:58:39,357:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:58:39,952:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 00:58:40,557:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 00:58:41,222:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 00:58:41,833:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 00:58:42,614:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 00:58:43,244:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 00:58:43,846:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 00:58:44,466:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 00:58:44,932:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 00:59:00,002:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:59:00,002:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:59:00,004:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:59:00,004:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:59:36,263:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:59:36,263:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 00:59:36,579:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 00:59:37,124:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 00:59:37,736:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 00:59:38,320:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 00:59:38,928:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 00:59:39,561:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 00:59:40,195:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 00:59:40,829:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 00:59:41,426:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 00:59:42,048:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 00:59:57,125:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:59:57,125:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:59:57,126:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 00:59:57,126:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:00:10,357:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:00:10,357:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:00:10,666:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 01:00:11,228:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 01:00:11,856:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 01:00:12,451:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 01:00:13,074:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 01:00:13,693:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 01:00:14,203:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 01:00:14,826:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 01:00:15,632:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 01:00:16,252:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 01:00:31,320:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:00:31,320:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:00:31,322:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:00:31,322:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:01:02,703:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:01:02,704:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:01:03,033:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 01:01:03,661:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 01:01:04,415:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 01:01:04,986:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 01:01:05,614:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 01:01:06,270:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 01:01:06,869:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 01:01:07,485:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 01:01:08,107:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 01:01:08,704:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 01:01:23,774:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:01:23,774:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:01:23,776:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:01:23,776:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:01:28,894:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:01:28,894:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:01:29,263:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 01:01:29,860:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 01:01:30,480:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 01:01:31,010:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 01:01:31,634:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 01:01:32,182:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 01:01:32,746:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 01:01:33,368:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 01:01:33,926:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 01:01:34,530:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 01:01:49,598:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:01:49,598:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:01:49,600:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:01:49,600:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:02:00,546:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:02:00,547:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:02:00,863:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 01:02:01,499:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 01:02:02,107:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 01:02:02,731:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 01:02:03,372:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 01:02:03,908:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 01:02:04,513:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 01:02:05,071:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 01:02:05,700:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 01:02:06,327:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 01:02:21,395:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:02:21,395:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:02:21,397:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:02:21,397:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:02:27,305:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:02:27,305:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:02:27,656:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 01:02:28,250:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 01:02:28,821:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 01:02:29,422:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 01:02:29,969:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 01:02:30,592:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 01:02:31,220:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 01:02:31,841:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 01:02:32,619:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 01:02:33,243:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 01:02:48,310:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:02:48,310:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:02:48,312:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:02:48,312:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:17:56,288:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:17:56,288:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:17:56,605:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 01:17:57,211:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 01:17:57,802:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 01:17:58,432:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 01:17:59,043:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 01:17:59,613:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 01:18:00,264:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 01:18:01,037:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 01:18:01,625:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 01:18:02,190:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 01:18:17,260:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:18:17,260:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:18:17,262:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:18:17,262:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:34:28,054:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:34:28,055:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:34:28,368:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 01:34:29,009:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 01:34:32,932:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 01:34:48,237:ERROR:__main__:Connection Timeout or unknown host on: 192.168.122.104
+2018-10-12 01:34:48,237:ERROR:__main__:Connection Timeout or unknown host on: 192.168.122.104
+2018-10-12 01:34:48,239:DEBUG:__main__:Connection Timeout or unknown host on: 192.168.122.104
+2018-10-12 01:34:48,239:DEBUG:__main__:Connection Timeout or unknown host on: 192.168.122.104
+2018-10-12 01:34:48,558:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 01:34:48,558:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 01:34:49,164:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 01:34:49,164:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 01:34:49,748:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 01:34:49,748:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 01:34:50,364:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 01:34:50,364:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 01:34:50,946:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 01:34:50,946:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 01:35:06,132:ERROR:__main__:Connection Timeout or unknown host on: 192.168.122.105
+2018-10-12 01:35:06,132:ERROR:__main__:Connection Timeout or unknown host on: 192.168.122.105
+2018-10-12 01:35:06,132:ERROR:__main__:Connection Timeout or unknown host on: 192.168.122.105
+2018-10-12 01:35:06,134:DEBUG:__main__:Connection Timeout or unknown host on: 192.168.122.105
+2018-10-12 01:35:06,134:DEBUG:__main__:Connection Timeout or unknown host on: 192.168.122.105
+2018-10-12 01:35:06,134:DEBUG:__main__:Connection Timeout or unknown host on: 192.168.122.105
+2018-10-12 01:58:31,473:ERROR:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:58:31,473:DEBUG:__main__:Connection Timeout or unknown host on: 10.6.456.3
+2018-10-12 01:58:31,897:DEBUG:__main__:Connection established on: 192.168.122.101
+2018-10-12 01:58:32,496:DEBUG:__main__:Connection established on: 192.168.122.102
+2018-10-12 01:58:33,075:DEBUG:__main__:Connection established on: 192.168.122.103
+2018-10-12 01:58:33,683:DEBUG:__main__:Connection established on: 192.168.122.104
+2018-10-12 01:58:34,279:DEBUG:__main__:Connection established on: 192.168.122.106
+2018-10-12 01:58:34,878:DEBUG:__main__:Connection established on: 192.168.122.107
+2018-10-12 01:58:35,506:DEBUG:__main__:Connection established on: 192.168.122.108
+2018-10-12 01:58:36,115:DEBUG:__main__:Connection established on: 192.168.122.109
+2018-10-12 01:58:36,735:DEBUG:__main__:Connection established on: 192.168.122.110
+2018-10-12 01:58:37,228:DEBUG:__main__:Connection established on: 192.168.122.105
+2018-10-12 01:58:52,295:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:58:52,295:ERROR:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:58:52,297:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
+2018-10-12 01:58:52,297:DEBUG:__main__:
+Connection lost...Exception Socket Timeout on 192.168.122.105
