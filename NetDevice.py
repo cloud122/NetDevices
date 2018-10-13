@@ -33,12 +33,15 @@ from getpass import getpass
 import sys
 
 
-class NetDevices:
+class NetDevices(object):
     
     #currentDateTime = datetime.datime.now()
     number_of_devices = 0
     failed_login_attempts = 0
     max_failed_login = 3
+    successList = []
+    failedList = []
+    startTime = time.time()
     
 
     @classmethod
@@ -48,6 +51,69 @@ class NetDevices:
     @staticmethod
     def model_check(show_verison):
     	pass
+
+
+
+    @classmethod
+    def displayResults(cls):
+
+        try:
+
+            with open(os.path.join('./results.log'), 'a') as resultFile:
+
+                print('-'*79 + '\n')
+                print('------------------------------<---Results Screen--->---------------------------\n')
+                print('-------------------- [' + datetime.datetime.now().strftime('%c') + ' ]-------------------------------\n')
+                print('-'*79 + '\n')
+
+                resultFile.write('-'*79 + '\n')
+                resultFile.write('------------------------------<---Results Screen--->---------------------------\n')
+                resultFile.write('-------------------- [' + datetime.datetime.now().strftime('%c') + ' ]-------------------------------\n')
+                resultFile.write('-'*79 + '\n')
+
+
+
+                for result in cls.successList:
+                    print(result)
+                    resultFile.write(result + '\n')
+
+                resultFile.write('\n------------------------------<---Failures--->---------------------------------\n')
+                print('\n------------------------------<---Failures--->---------------------------------\n')
+
+                for result in cls.failedList:
+                    print(result)
+                    resultFile.write(result + '\n')
+
+
+        except IOError:
+            self.logger_error('results.log file created.')
+            self.logger_debug('results.log file created.')
+
+            with open(os.path.join('results.log'), 'w') as resultFile:
+
+                print('-'*79 + '\n')
+                print('------------' + datetime.datetime.now().strftime('%c') + '--------------------------\n')
+                print('------------------------------<---Results Screen--->---------------------------\n')
+                print('-'*79 + '\n')
+
+                resultFile.write('-'*79 + '\n')
+                resultFile.write('------------' + datetime.datetime.now().strftime('%c') + '--------------------------\n')
+                resultFile.write('------------------------------<---Results Screen--->---------------------------\n')
+                resultFile.write('-'*79 + '\n')
+
+                for result in cls.successList:
+                    print(result)
+                    resultFile.write(result + '\n')
+
+                resultFile.write('------------------------------<---Failures--->---------------------------------\n')
+                print('------------------------------<---Failures--->---------------------------------\n')
+                for result in cls.failedList:
+                    print(result)
+                    resultFile.write(result + '\n')
+
+        print("\nScript took --- %s seconds ---" % (time.time() - cls.startTime) + '\n')
+
+
 
     def __init__(self, hostname='generic', model='generic', configs="generic", user = 'admin', password = '',timeout=15):
     	self.hostname = hostname
@@ -78,23 +144,26 @@ class NetDevices:
                                              password=self.password,timeout=self.timeout,look_for_keys=False)
 
             except paramiko.ssh_exception.socket.gaierror:
-                print('Connection Timeout or unknown host on: ' + self.hostname)
-                self.logger_error('Connection Timeout or unknown host on: ' +  self.hostname)
-                self.logger_debug('Connection Timeout or unknown host on: ' +  self.hostname)
+                print('Connection Timeout or unknown host on: [{}]'.format(self.hostname))
+                NetDevices.failedList.append('Connection Timeout or unknown host on: [{}]'.format(self.hostname))
+                self.logger_error('Connection Timeout or unknown host on: [{}]'.format(self.hostname))
+                self.logger_debug('Connection Timeout or unknown host on: [{}]'.format(self.hostname))
                 return
 
             except paramiko.ssh_exception.socket.timeout:
-                print('Connection Timeout or unknown host on: ' + self.hostname)
-                self.logger_error('Connection Timeout or unknown host on: ' + self.hostname)
-                self.logger_debug('Connection Timeout or unknown host on: ' + self.hostname)
+                print('Connection Timeout or unknown host on:  [{}]'.format(self.hostname))
+                NetDevices.failedList.append('Connection Timeout or unknown host on: [{}]'.format(self.hostname))
+                self.logger_error('Connection Timeout or unknown host on: [{}]'.format(self.hostname))
+                self.logger_debug('Connection Timeout or unknown host on: [{}]'.format(self.hostname))
                 return
 
             ###-----catches authentication failures, limit 2 failures and script will stop
 
             except paramiko.ssh_exception.AuthenticationException:
-                print('Authentication failed on: ' + self.hostname)            
-                self.logger_error('Authentication failed on: ' + self.hostname)
-                self.logger_debug('Authentication failed on: ' + self.hostname)
+                print('Authentication failed on: ' + self.hostname)
+                NetDevices.failedList.append('Authentication failed on: [{}]'.format(self.hostname))           
+                self.logger_error('Authentication failed on: [{}]'.format(self.hostname))
+                self.logger_debug('Authentication failed on: [{}]'.format(self.hostname))
 
                 NetDevices.failed_login_attempts += 1
 
@@ -113,10 +182,10 @@ class NetDevices:
             ###------interact expect starts and enable mode
             try:
                 self.interact = SSHClientInteraction(self.remote_conn_pre, timeout = self.timeout, display = True)
-                print('Connection established on: ', self.hostname)
+                print('Connection established on: : [{}]'.format(self.hostname))
                 self.stdout.append(self.interact.current_output_clean)
 
-                self.logger_debug('Connection established on: ' + self.hostname)
+                self.logger_debug('Connection established on: [{}]'.format(self.hostname))
                 
                 self.interact.expect(['.*\#', '.*\>'], timeout=self.timeout)
                 if self.interact.last_match == '.*\>':
@@ -144,17 +213,19 @@ class NetDevices:
                     if self.interact.last_match == '.*\>':
                         self.stdout.append(self.interact.current_output_clean)
                         self.interact.close()
-                        print('Failed to enter Enable mode on: ' , self.hostname)
-                        self.logger_error('Failed to enter Enable mode on: ' + self.hostname)
-                        self.logger_debug('Failed to enter Enable mode on: ' + self.hostname)
+                        print('Failed to enter Enable mode on: [{}]'.format(self.hostname))
+                        NetDevices.failedList.append('Failed to enter Enable mode on: [{}]'.format(self.hostname))
+                        self.logger_error('Failed to enter Enable mode on: [{}]'.format(self.hostname))
+                        self.logger_debug('Failed to enter Enable mode on: [{}]'.format(self.hostname))
                         self.remote_conn_pre.close()
 
             except paramiko.ssh_exception.socket.timeout:
                 self.interact.close()
                 self.remote_conn_pre.close()
-                print('\nConnection lost...Exception Socket Timeout')
-                self.logger_error('\nConnection lost...Exception Socket Timeout on ' + self.hostname)
-                self.logger_debug('\nConnection lost...Exception Socket Timeout on ' + self.hostname)
+                print('Connection lost...Exception Socket Timeout on: [{}]'.format(self.hostname))
+                NetDevices.failedList.append('Connection lost...Exception Socket Timeout on: [{}]'.format(self.hostname))
+                self.logger_error('Connection lost...Exception Socket Timeout on: [{}]'.format(self.hostname))
+                self.logger_debug('Connection lost...Exception Socket Timeout on: [{}]'.format(self.hostname))
                 return
 
 
@@ -184,6 +255,8 @@ class NetDevices:
                     time.sleep(2)
                     self.interact.expect('.*\#', timeout=180)
                     self.stdout.append(self.interact.current_output_clean)
+
+            NetDevices.successList.append('Commands successful on: [{}]'.format(self.hostname))
 
 
         except Exception as e:
@@ -267,6 +340,9 @@ class NetDevices:
                     outputFile.write(outline + '\n')
             outputFile.close()
 
+
+
+
     def threadMethod(function):
         '''
         @threadMethod
@@ -344,8 +420,6 @@ class NetDevices:
 
 def main():
     
-    start_time = time.time()
-
     with open(sys.argv[1]) as device_file:
         for device in device_file:
             if not device.strip() or device.startswith('#'):
@@ -359,7 +433,7 @@ def main():
                     commodity_sw.send(*cmd_file)
                 cmd_file.close()
 
-    print("Script took--- %s seconds ---" % (time.time() - start_time))
+    NetDevices.displayResults()
 
 
 main()
