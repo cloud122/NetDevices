@@ -31,7 +31,10 @@ from paramiko_expect import SSHClientInteraction
 import readline
 from getpass import getpass
 import sys
+import threading
+from multiprocessing.dummy import Pool as ThreadPool
 
+#import pdb; pdb.set_trace()
 
 class NetDevices(object):
     
@@ -42,6 +45,9 @@ class NetDevices(object):
     successList = []
     failedList = []
     startTime = time.time()
+
+    sLock = threading.Lock()
+    fLock = threading.Lock()
     
 
     @classmethod
@@ -115,14 +121,16 @@ class NetDevices(object):
 
 
 
-    def __init__(self, hostname='generic', model='generic', configs="generic", user = 'admin', password = '',timeout=15):
+    def __init__(self, hostname='generic', model='generic', configs="generic", user = 'admin', password = '',timeout=15,display=True):
     	self.hostname = hostname
     	self.model = model
     	self.configs = configs
         self.user = user
         self.password = password
         self.timeout= timeout
+        self.display= display
         self.stdout = []
+        self.commandList = []
 
 
 
@@ -181,7 +189,7 @@ class NetDevices(object):
 
             ###------interact expect starts and enable mode
             try:
-                self.interact = SSHClientInteraction(self.remote_conn_pre, timeout = self.timeout, display = True)
+                self.interact = SSHClientInteraction(self.remote_conn_pre, timeout = self.timeout, display = self.display)
                 print('Connection established on: : [{}]'.format(self.hostname))
                 self.stdout.append(self.interact.current_output_clean)
 
@@ -227,53 +235,60 @@ class NetDevices(object):
                 self.logger_error('Connection lost...Exception Socket Timeout on: [{}]'.format(self.hostname))
                 self.logger_debug('Connection lost...Exception Socket Timeout on: [{}]'.format(self.hostname))
                 return
+            
+            ###-------------------------------------sending commands------------------------------------------------------------
+
+            if self.model == 'linux':
+                pass
+        
+            '''
+            can pass commands single or pass *commands list
+            '''
+            if self.remote_conn_pre.get_transport() == None:
+                return
+            try:
+
+                for command in self.commandList:
+                    self.interact.send(command)
+                    self.stdout.append(self.interact.current_output_clean)
+                    #print(self.interact.current_output)
+                    self.interact.expect(['.*\#', '.*\(y/n\) '])
+                    #print(self.interact.current_output)
+                    self.stdout.append(self.interact.current_output_clean)
+                    if self.interact.last_match == '.*\(y/n\) ':
+                        self.interact.send('y')
+                        self.stdout.append(self.interact.current_output_clean)
+                        time.sleep(2)
+                        self.interact.expect('.*\#', timeout=180)
+                        self.stdout.append(self.interact.current_output_clean)
+
+                NetDevices.successList.append('Commands successful on: [{}]'.format(self.hostname))
 
 
+            except Exception as e:
+                self.logger_error("Exception: on sending command" + str(e))
+                self.logger_debug()
+                self.stdout.append(self.interact.current_output_clean)
+                raise
+                #traceback.print_exc()
+
+            self.log_output()
+
+            print('\n' + '-'*79 )
+            print('\n' + '-'*79 + '\n')
+            print('         Hostname: ' + self.hostname.strip())
+            print('         ' + datetime.datetime.now().strftime('%c') + '\n')
+            print('\n' + '-'*79 + '\n')
+            print('----------------------------<---Commands completed--->-------------------------\n')
+
+
+    def setCommands(self, *commands):
+        self.commandList = [command for command in commands]
 
     def send(self, *commands):
+        pass
 
-        if self.model == 'linux':
-            pass
-    	
-    	'''
-    	can pass commands single or pass *commands list
-    	'''
-        if self.remote_conn_pre.get_transport() == None:
-            return
-        try:
-            
-            for command in commands:
-                self.interact.send(command)
-                self.stdout.append(self.interact.current_output_clean)
-                #print(self.interact.current_output)
-                self.interact.expect(['.*\#', '.*\(y/n\) '])
-                #print(self.interact.current_output)
-                self.stdout.append(self.interact.current_output_clean)
-                if self.interact.last_match == '.*\(y/n\) ':
-                    self.interact.send('y')
-                    self.stdout.append(self.interact.current_output_clean)
-                    time.sleep(2)
-                    self.interact.expect('.*\#', timeout=180)
-                    self.stdout.append(self.interact.current_output_clean)
-
-            NetDevices.successList.append('Commands successful on: [{}]'.format(self.hostname))
-
-
-        except Exception as e:
-            self.logger_error("Exception: on sending command" + str(e))
-            self.logger_debug()
-            self.stdout.append(self.interact.current_output_clean)
-            raise
-            #traceback.print_exc()
-
-        self.log_output()
-
-        print('\n' + '-'*79 )
-        print('\n' + '-'*79 + '\n')
-        print('         Hostname: ' + self.hostname.strip())
-        print('         ' + datetime.datetime.now().strftime('%c') + '\n')
-        print('\n' + '-'*79 + '\n')
-        print('----------------------------<---Commands completed--->-------------------------\n')
+        
 
 
     def logger_error(self, message):
@@ -420,18 +435,23 @@ class NetDevices(object):
 
 def main():
     
+
+
+    with open(sys.argv[2]) as cmd_file:               
+        cmdList = [cmd.strip() for cmd in cmd_file]
+                
+    cmd_file.close()
+
+
     with open(sys.argv[1]) as device_file:
         for device in device_file:
             if not device.strip() or device.startswith('#'):
                 continue
             else:
                 currentDevice = device.strip()
-                commodity_sw = NetDevices(hostname=currentDevice, user='georchan', password='cisco')
+                commodity_sw = NetDevices(hostname=currentDevice, user='georchan', password='cisco',display=True)
+                commodity_sw.setCommands(*cmdList)
                 commodity_sw.connect()
-
-                with open(sys.argv[2]) as cmd_file:               
-                    commodity_sw.send(*cmd_file)
-                cmd_file.close()
 
     NetDevices.displayResults()
 
