@@ -144,7 +144,7 @@ class NetDevices(object):
 
         '''Displaying device output'''
         for output in self.stdout:
-            print colored(output,'yellow')
+            print(output)
 
         cls.outputLock.release()
 
@@ -298,11 +298,11 @@ class NetDevices(object):
                         sys.exit('!!!!!!Script will stop!!!!!!')
 
                 except Exception as e:
-                    print colored(("Exception: connection error: [{}] Traceback error: {}".format(self.hostname, str(e))),'red')
-                    NetDevices.logger_error("Exception: connection error: [{}] Traceback error: {}".format(self.hostname, str(e)))
+                    print colored(("Connection error: [{}]\n Traceback error: {}".format(self.hostname, str(e))),'red')
+                    NetDevices.logger_error("Connection error: [{}]\n Traceback error: {}".format(self.hostname, str(e)))
                     NetDevices.logger_debug()
                     NetDevices.failedLock.acquire()
-                    NetDevices.failedList.append('Exception: connection error: [{}]'.format(self.hostname, str(e)))
+                    NetDevices.failedList.append("Connection error: [{}]\n Traceback error: {}".format(self.hostname, str(e)))
                     NetDevices.failedLock.release()
 
                     return
