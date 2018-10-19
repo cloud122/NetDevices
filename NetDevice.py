@@ -32,7 +32,7 @@ import readline
 from getpass import getpass
 import sys
 import threading
-from multiprocessing.dummy import Pool as ThreadPool
+from termcolor import colored
 
 #import pdb; pdb.set_trace()
 
@@ -52,8 +52,9 @@ class NetDevices(object):
     failedLock = threading.Lock()
     resultsLock = threading.Lock()
     outputLock = threading.Lock()
+    completeLock = threading.Lock()
     
-    maxNumberOfThreads = 5
+    maxNumberOfThreads = 6
     threadLimiter = threading.BoundedSemaphore(maxNumberOfThreads)
 
     threadCounter = 0
@@ -83,13 +84,17 @@ class NetDevices(object):
         import logging
         
         cls.errorLock.acquire()
+        if not os.path.exists('./logs/'):
+            os.makedirs('./logs/')
+            cls.error_logger.error('Path created:  ./logs/')
+
         try:
             for message in messages:
 
                 cls.formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(name)s:%(message)s') 
                 cls.error_logger = logging.getLogger(__name__)
                 cls.error_logger.setLevel(logging.WARNING)
-                cls.error_file_handler = logging.FileHandler('error.log')
+                cls.error_file_handler = logging.FileHandler('./logs/error.log')
                 cls.error_file_handler.setFormatter(cls.formatter)
                 cls.error_logger.addHandler(cls.error_file_handler)
 
@@ -103,13 +108,19 @@ class NetDevices(object):
         import logging
 
         cls.debugLock.acquire()
+
+        if not os.path.exists('./logs/'):
+            os.makedirs('./logs/')
+            cls.debug_logger.debug('Path created:  ./logs/')
+
+        paramiko.util.log_to_file("./logs/paramiko.log")
         try:
             for message in messages:
 
                 cls.formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(name)s:%(message)s') 
                 cls.debug_logger = logging.getLogger(__name__)
                 cls.debug_logger.setLevel(logging.DEBUG)
-                cls.debug_file_handler = logging.FileHandler('debug.log')
+                cls.debug_file_handler = logging.FileHandler('./logs/debug.log')
                 cls.debug_file_handler.setFormatter(cls.formatter)
                 cls.debug_logger.addHandler(cls.debug_file_handler)
 
@@ -125,46 +136,48 @@ class NetDevices(object):
         
         cls.outputLock.acquire()
 
-        print('-'*79 + '\n')
-        print('Hostname: ' + self.hostname)
-        print('------------' + datetime.datetime.now().strftime('%c') + '------------------\n')
-        print('------------------------------<---Output Screen--->----------------------------\n')
-        print('-'*79 + '\n')
+        outputBorder = ('\n\n\n'+ '-'*79 + '\n' + '            Hostname: ' + self.hostname + '            ' 
+                        + datetime.datetime.now().strftime("%b %d %Y %H:%M:%S") + '          \n'
+                        +'------------------------------<---Output Screen--->----------------------------\n'+'-'*79 + '\n')
 
+        print colored(outputBorder, 'cyan')
+
+        '''Displaying device output'''
         for output in self.stdout:
-            print(output)
+            print colored(output,'yellow')
 
         cls.outputLock.release()
 
 
     @classmethod
     def displayResults(cls):
+        
+        outputBorder = ('-'*79 + '\n---------------------------------' + datetime.datetime.now().strftime("%b %d %Y %H:%M:%S") +
+                '--------------------------\n------------------------------<---Results Screen--->---------------------------\n' 
+                + '-'*79 + '\n')
 
         try:
+            if not os.path.exists('./logs/'):
+                os.makedirs('./logs/')
 
-            with open(os.path.join('./results.log'), 'a') as resultFile:
+                NetDevices.logger_error('Path created:  ./logs/')
+                NetDevices.logger_debug('Path created:  ./logs/')
 
-                print('-'*79 + '\n')
-                print('------------------------------<---Results Screen--->---------------------------\n')
-                print('-------------------- [' + datetime.datetime.now().strftime('%c') + ' ]-------------------------------\n')
-                print('-'*79 + '\n')
+            with open(os.path.join('./logs/results.log'), 'a') as resultFile:
 
-                resultFile.write('-'*79 + '\n')
-                resultFile.write('------------------------------<---Results Screen--->---------------------------\n')
-                resultFile.write('-------------------- [' + datetime.datetime.now().strftime('%c') + ' ]-------------------------------\n')
-                resultFile.write('-'*79 + '\n')
+                print colored(outputBorder, 'cyan')
 
-
+                resultFile.write(outputBorder)
 
                 for result in cls.successList:
-                    print(result)
+                    print colored(result, 'green')
                     resultFile.write(result + '\n')
 
                 resultFile.write('\n------------------------------<---Failures--->---------------------------------\n')
-                print('\n------------------------------<---Failures--->---------------------------------\n')
+                print colored('\n------------------------------<---Failures--->---------------------------------\n','red')
 
                 for result in cls.failedList:
-                    print(result)
+                    print colored(result, 'red')
                     resultFile.write(result + '\n')
 
 
@@ -173,16 +186,10 @@ class NetDevices(object):
             NetDevices.logger_debug('results.log file created.')
 
             with open(os.path.join('results.log'), 'w') as resultFile:
+           
+                print colored(outputBorder, 'cyan')
 
-                print('-'*79 + '\n')
-                print('------------' + datetime.datetime.now().strftime('%c') + '--------------------------\n')
-                print('------------------------------<---Results Screen--->---------------------------\n')
-                print('-'*79 + '\n')
-
-                resultFile.write('-'*79 + '\n')
-                resultFile.write('------------' + datetime.datetime.now().strftime('%c') + '--------------------------\n')
-                resultFile.write('------------------------------<---Results Screen--->---------------------------\n')
-                resultFile.write('-'*79 + '\n')
+                resultFile.write(outputBorder)
 
                 for result in cls.successList:
                     print(result)
@@ -194,7 +201,7 @@ class NetDevices(object):
                     print(result)
                     resultFile.write(result + '\n')
 
-        print("\nScript took --- %s seconds ---" % (time.time() - cls.startTime) + '\n')
+        print colored("\nScript took --- %s seconds ---" % (time.time() - cls.startTime) + '\n', 'cyan')
 
     def threadMethod(function):
         '''
@@ -207,6 +214,7 @@ class NetDevices(object):
         def wrapper(*args, **kwargs):
 
              thread = threading.Thread(target=function, args=args, kwargs=kwargs)
+             thread.daemon = True
              thread.start()
              return thread
 
@@ -250,7 +258,7 @@ class NetDevices(object):
                                                  password=self.password,timeout=self.timeout,look_for_keys=False)
 
                 except paramiko.ssh_exception.socket.gaierror:
-                    print('Connection Timeout or unknown host on: [{}]'.format(self.hostname))
+                    print colored('Connection Timeout or unknown host on: [{}]'.format(self.hostname),'red')
                     NetDevices.failedLock.acquire()
                     NetDevices.failedList.append('Connection Timeout or unknown host on: [{}]'.format(self.hostname))
                     NetDevices.failedLock.release()
@@ -259,7 +267,7 @@ class NetDevices(object):
                     return
 
                 except paramiko.ssh_exception.socket.timeout:
-                    print('Connection Timeout or unknown host on:  [{}]'.format(self.hostname))
+                    print colored('Connection Timeout or unknown host on:  [{}]'.format(self.hostname), 'red')
                     NetDevices.failedLock.acquire()
                     NetDevices.failedList.append('Connection Timeout or unknown host on: [{}]'.format(self.hostname))
                     NetDevices.failedLock.release()
@@ -270,7 +278,7 @@ class NetDevices(object):
                 ###-----catches authentication failures, limit 2 failures and script will stop
 
                 except paramiko.ssh_exception.AuthenticationException:
-                    print('Authentication failed on: ' + self.hostname)
+                    print colored('Authentication failed on: ' + self.hostname,'red')
                     NetDevices.failedLock.acquire()
                     NetDevices.failedList.append('Authentication failed on: [{}]'.format(self.hostname))
                     NetDevices.failedLock.release()           
@@ -279,9 +287,9 @@ class NetDevices(object):
 
                     NetDevices.failed_login_attempts += 1
 
-                    print('Number of failed attempts: ',NetDevices.failed_login_attempts)
+                    print colored(('Number of failed attempts: ' + NetDevices.failed_login_attempts),'red')
                     if (NetDevices.failed_login_attempts > NetDevices.max_failed_login):
-                        print('Warning!!! Too many authentication failures, danger of your account being locked out!!!')
+                        print colored('Warning!!! Too many authentication failures, danger of your account being locked out!!!', 'red')
                         NetDevices.logger_error('Too many failed authentication' + NetDevices.failed_login_attempts  
                                       + 'number of failed attempts, script cancelled.')
                         NetDevices.logger_debug('Too many failed authentication' + NetDevices.failed_login_attempts  
@@ -290,6 +298,7 @@ class NetDevices(object):
                         sys.exit('!!!!!!Script will stop!!!!!!')
 
                 except Exception as e:
+                    print colored(("Exception: connection error: [{}] Traceback error: {}".format(self.hostname, str(e))),'red')
                     NetDevices.logger_error("Exception: connection error: [{}] Traceback error: {}".format(self.hostname, str(e)))
                     NetDevices.logger_debug()
                     NetDevices.failedLock.acquire()
@@ -301,7 +310,7 @@ class NetDevices(object):
                 ###------interact expect starts and enable mode
                 try:
                     self.interact = SSHClientInteraction(self.remote_conn_pre, timeout = self.timeout, display = False)
-                    print('Connection established on: : [{}]'.format(self.hostname))
+                    print colored(('Connection established on: : [{}]'.format(self.hostname)), 'green')
                     self.stdout.append(self.interact.current_output)
 
                     NetDevices.logger_debug('Connection established on: [{}]'.format(self.hostname))
@@ -332,7 +341,7 @@ class NetDevices(object):
                         if self.interact.last_match == '.*\>':
                             self.stdout.append(self.interact.current_output)
                             self.interact.close()
-                            print('Failed to enter Enable mode on: [{}]'.format(self.hostname))
+                            print colored(('Failed to enter Enable mode on: [{}]'.format(self.hostname)), 'red')
                             NetDevices.failedList.append('Failed to enter Enable mode on: [{}]'.format(self.hostname))
                             NetDevices.logger_error('Failed to enter Enable mode on: [{}]'.format(self.hostname))
                             NetDevices.logger_debug('Failed to enter Enable mode on: [{}]'.format(self.hostname))
@@ -341,7 +350,7 @@ class NetDevices(object):
                 except paramiko.ssh_exception.socket.timeout:
                     self.interact.close()
                     self.remote_conn_pre.close()
-                    print('Connection lost...Exception Socket Timeout on: [{}]'.format(self.hostname))
+                    print colored(('Connection lost...Exception Socket Timeout on: [{}]'.format(self.hostname)), 'red')
                     NetDevices.failedLock.acquire()
                     NetDevices.failedList.append('Connection lost...Exception Socket Timeout on: [{}]'.format(self.hostname))
                     NetDevices.failedLock.release()
@@ -390,17 +399,18 @@ class NetDevices(object):
                     NetDevices.failedLock.acquire()
                     NetDevices.failedList.append('Exception: on sending command on: [{}]'.format(self.hostname))
                     NetDevices.failedLock.release()
-                    raise
+
                     #traceback.print_exc()
 
                 self.log_output()
 
-                print('\n' + '-'*79 )
-                print('\n' + '-'*79 + '\n')
-                print('                   Hostname: ' + self.hostname.strip())
-                print('                   ' + datetime.datetime.now().strftime('%c') + '\n')
-                print('-'*79 + '\n')
-                print('----------------------------<---Commands completed--->-------------------------\n')
+                outputBorder = ('\n' + '-'*79 + '\n' + '-'*79 + '\n' + '                   Hostname: ' + self.hostname.strip()
+                                + '             ' + datetime.datetime.now().strftime("%b %d %Y %H:%M:%S") + '\n'
+                                + '-'*79 + '\n' + '----------------------------<---Commands completed--->-------------------------\n')
+
+                NetDevices.completeLock.acquire()
+                print colored(outputBorder, 'cyan')
+                NetDevices.completeLock.release()
 
                 if self.display == True:
                     NetDevices.displayOutput(self)
@@ -425,18 +435,21 @@ class NetDevices(object):
 
     def log_output(self):
         import datetime
-        #currentDateTime = datetime.datime.now()
-        
+        currentDateTime = datetime.datetime.now().strftime("%b %d %Y %H:%M")
+
         try:
-            if not os.path.exists('./device-logs/'):
-                os.makedirs('./device-logs/')
+            if not os.path.exists('./device-logs/' + currentDateTime):
+                os.makedirs('./device-logs/' + currentDateTime)
+
                 NetDevices.logger_error('Path created:  ./device-logs/')
                 NetDevices.logger_debug('Path created:  ./device-logs/')
+                NetDevices.logger_error('Path created:  ./device-logs/' + currentDateTime)
+                NetDevices.logger_debug('Path created:  ./device-logs/' + currentDateTime)
 
-            with open(os.path.join('./device-logs/',self.hostname + '.log'), 'a') as outputFile:
+            with open(os.path.join('./device-logs/' + currentDateTime, self.hostname + '.log'), 'a') as outputFile:
                 outputFile.write('-'*79 + '\n')
                 outputFile.write('Hostname: ' + self.hostname)
-                outputFile.write('------------' + datetime.datetime.now().strftime('%c') + '------------------\n')
+                outputFile.write('------------' + datetime.datetime.now().strftime("%b %d %Y %H:%M:%S") + '----------------------\n')
                 outputFile.write('------------------------------<---Output Screen--->----------------------------\n')
                 outputFile.write('-'*79 + '\n')
 
@@ -448,10 +461,10 @@ class NetDevices(object):
             NetDevices.logger_error(self.hostname + '.log file created.')
             NetDevices.logger_debug(self.hostname + '.log file created.')
 
-            with open(os.path.join('./device-logs/',self.hostname + '.log'), 'w') as outputFile:
+            with open(os.path.join('./device-logs/'+ currentDateTime, self.hostname + '.log'), 'w') as outputFile:
                 outputFile.write('-'*79 + '\n')
                 outputFile.write('Hostname: ' + self.hostname)
-                outputFile.write('------------' + datetime.datetime.now().strftime('%c') + '------------------\n')
+                outputFile.write('------------' + datetime.datetime.now().strftime("%b %d %Y %H:%M:%S") + '----------------------\n')
                 outputFile.write('------------------------------<---Output Screen--->----------------------------\n')
                 outputFile.write('-'*79 + '\n')
 
@@ -466,7 +479,7 @@ class NetDevices(object):
         '''
         pass
 
-    def variable_change(self, currentDevice, *commands):
+    def variable_command(self, currentDevice, *commands):
         '''
         function to use variable to loop through different devices.  Example: tftp different configs to specific matching device.
         '''
@@ -538,7 +551,7 @@ def main():
                 continue
             else:
                 currentDevice = device.strip()
-                commodity_sw = NetDevices(hostname=currentDevice, user='georchan', password='cisco',display=True)
+                commodity_sw = NetDevices(hostname=currentDevice, user='georchan', password='cisco',display=False)
                 commodity_sw.setCommands(*cmdList)
                 threadList.append(commodity_sw.connect())
 
