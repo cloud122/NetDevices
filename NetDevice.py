@@ -140,7 +140,7 @@ class NetDevices(object):
                         + datetime.datetime.now().strftime("%b %d %Y %H:%M:%S") + '          \n'
                         +'------------------------------<---Output Screen--->----------------------------\n'+'-'*79 + '\n')
 
-        print colored(outputBorder, 'cyan')
+        print(colored(outputBorder, 'cyan'))
 
         '''Displaying device output'''
         for output in self.stdout:
@@ -165,19 +165,19 @@ class NetDevices(object):
 
             with open(os.path.join('./logs/results.log'), 'a') as resultFile:
 
-                print colored(outputBorder, 'cyan')
+                print(colored(outputBorder, 'cyan'))
 
                 resultFile.write(outputBorder)
 
                 for result in cls.successList:
-                    print colored(result, 'green')
+                    print(colored(result, 'green'))
                     resultFile.write(result + '\n')
 
                 resultFile.write('\n------------------------------<---Failures--->---------------------------------\n')
-                print colored('\n------------------------------<---Failures--->---------------------------------\n','red')
+                print(colored('\n------------------------------<---Failures--->---------------------------------\n','red'))
 
                 for result in cls.failedList:
-                    print colored(result, 'red')
+                    print(colored(result, 'red'))
                     resultFile.write(result + '\n')
 
 
@@ -187,7 +187,7 @@ class NetDevices(object):
 
             with open(os.path.join('results.log'), 'w') as resultFile:
            
-                print colored(outputBorder, 'cyan')
+                print(colored(outputBorder, 'cyan'))
 
                 resultFile.write(outputBorder)
 
@@ -201,7 +201,7 @@ class NetDevices(object):
                     print(result)
                     resultFile.write(result + '\n')
 
-        print colored("\nScript took --- %s seconds ---" % (time.time() - cls.startTime) + '\n', 'cyan')
+        print(colored("\nScript took --- %s seconds ---" % (time.time() - cls.startTime) + '\n', 'cyan'))
 
     def threadMethod(function):
         '''
@@ -258,7 +258,7 @@ class NetDevices(object):
                                                  password=self.password,timeout=self.timeout,look_for_keys=False)
 
                 except paramiko.ssh_exception.socket.gaierror:
-                    print colored('Connection Timeout or unknown host on: [{}]'.format(self.hostname),'red')
+                    print(colored('Connection Timeout or unknown host on: [{}]'.format(self.hostname),'red'))
                     NetDevices.failedLock.acquire()
                     NetDevices.failedList.append('Connection Timeout or unknown host on: [{}]'.format(self.hostname))
                     NetDevices.failedLock.release()
@@ -267,7 +267,7 @@ class NetDevices(object):
                     return
 
                 except paramiko.ssh_exception.socket.timeout:
-                    print colored('Connection Timeout or unknown host on:  [{}]'.format(self.hostname), 'red')
+                    print(colored('Connection Timeout or unknown host on:  [{}]'.format(self.hostname), 'red'))
                     NetDevices.failedLock.acquire()
                     NetDevices.failedList.append('Connection Timeout or unknown host on: [{}]'.format(self.hostname))
                     NetDevices.failedLock.release()
@@ -278,7 +278,7 @@ class NetDevices(object):
                 ###-----catches authentication failures, limit 2 failures and script will stop
 
                 except paramiko.ssh_exception.AuthenticationException:
-                    print colored('Authentication failed on: ' + self.hostname,'red')
+                    print(colored('Authentication failed on: ' + self.hostname,'red'))
                     NetDevices.failedLock.acquire()
                     NetDevices.failedList.append('Authentication failed on: [{}]'.format(self.hostname))
                     NetDevices.failedLock.release()           
@@ -287,9 +287,9 @@ class NetDevices(object):
 
                     NetDevices.failed_login_attempts += 1
 
-                    print colored(('Number of failed attempts: ' + NetDevices.failed_login_attempts),'red')
+                    print(colored(('Number of failed attempts: ' + NetDevices.failed_login_attempts),'red'))
                     if (NetDevices.failed_login_attempts > NetDevices.max_failed_login):
-                        print colored('Warning!!! Too many authentication failures, danger of your account being locked out!!!', 'red')
+                        print(colored('Warning!!! Too many authentication failures, danger of your account being locked out!!!', 'red'))
                         NetDevices.logger_error('Too many failed authentication' + NetDevices.failed_login_attempts  
                                       + 'number of failed attempts, script cancelled.')
                         NetDevices.logger_debug('Too many failed authentication' + NetDevices.failed_login_attempts  
@@ -298,7 +298,7 @@ class NetDevices(object):
                         sys.exit('!!!!!!Script will stop!!!!!!')
 
                 except Exception as e:
-                    print colored(("Connection error: [{}]\n Traceback error: {}".format(self.hostname, str(e))),'red')
+                    print(colored(("Connection error: [{}]\n Traceback error: {}".format(self.hostname, str(e))),'red'))
                     NetDevices.logger_error("Connection error: [{}]\n Traceback error: {}".format(self.hostname, str(e)))
                     NetDevices.logger_debug()
                     NetDevices.failedLock.acquire()
@@ -310,7 +310,7 @@ class NetDevices(object):
                 ###------interact expect starts and enable mode
                 try:
                     self.interact = SSHClientInteraction(self.remote_conn_pre, timeout = self.timeout, display = False)
-                    print colored(('Connection established on: : [{}]'.format(self.hostname)), 'green')
+                    print(colored(('Connection established on: : [{}]'.format(self.hostname)), 'green'))
                     self.stdout.append(self.interact.current_output)
 
                     NetDevices.logger_debug('Connection established on: [{}]'.format(self.hostname))
@@ -341,7 +341,7 @@ class NetDevices(object):
                         if self.interact.last_match == '.*\>':
                             self.stdout.append(self.interact.current_output)
                             self.interact.close()
-                            print colored(('Failed to enter Enable mode on: [{}]'.format(self.hostname)), 'red')
+                            print(colored(('Failed to enter Enable mode on: [{}]'.format(self.hostname)), 'red'))
                             NetDevices.failedList.append('Failed to enter Enable mode on: [{}]'.format(self.hostname))
                             NetDevices.logger_error('Failed to enter Enable mode on: [{}]'.format(self.hostname))
                             NetDevices.logger_debug('Failed to enter Enable mode on: [{}]'.format(self.hostname))
@@ -350,7 +350,7 @@ class NetDevices(object):
                 except paramiko.ssh_exception.socket.timeout:
                     self.interact.close()
                     self.remote_conn_pre.close()
-                    print colored(('Connection lost...Exception Socket Timeout on: [{}]'.format(self.hostname)), 'red')
+                    print(colored(('Connection lost...Exception Socket Timeout on: [{}]'.format(self.hostname)), 'red'))
                     NetDevices.failedLock.acquire()
                     NetDevices.failedList.append('Connection lost...Exception Socket Timeout on: [{}]'.format(self.hostname))
                     NetDevices.failedLock.release()
@@ -409,7 +409,7 @@ class NetDevices(object):
                                 + '-'*79 + '\n' + '----------------------------<---Commands completed--->-------------------------\n')
 
                 NetDevices.completeLock.acquire()
-                print colored(outputBorder, 'cyan')
+                print(colored(outputBorder, 'cyan'))
                 NetDevices.completeLock.release()
 
                 if self.display == True:
