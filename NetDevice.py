@@ -39,6 +39,8 @@ from termcolor import colored
 class NetDevices(object):
     
     #currentDateTime = datetime.datime.now()
+    event_thread = threading.Event()
+    event_thread.set()
     number_of_devices = 0
     failed_login_attempts = 0
     max_failed_login = 3
@@ -55,7 +57,10 @@ class NetDevices(object):
     completeLock = threading.Lock()
     
     maxNumberOfThreads = 6
+    
+    #limit threads to 3 to check for password lockouts then change to max
     threadLimiter = threading.BoundedSemaphore(maxNumberOfThreads)
+
 
     threadCounter = 0
 
@@ -245,6 +250,7 @@ class NetDevices(object):
     @threadMethod
     def connect(self, method='SSH'):
 
+        NetDevices.event_thread.wait()
         NetDevices.threadLimiter.acquire()
         NetDevices.threadCounter +=1
         NetDevices.logger_debug("\nNumber of threads active: " + str(NetDevices.threadCounter))
@@ -281,21 +287,25 @@ class NetDevices(object):
                     print(colored('Authentication failed on: ' + self.hostname,'red'))
                     NetDevices.failedLock.acquire()
                     NetDevices.failedList.append('Authentication failed on: [{}]'.format(self.hostname))
+                    NetDevices.failed_login_attempts += 1
                     NetDevices.failedLock.release()           
                     NetDevices.logger_error('Authentication failed on: [{}]'.format(self.hostname))
                     NetDevices.logger_debug('Authentication failed on: [{}]'.format(self.hostname))
 
-                    NetDevices.failed_login_attempts += 1
-
-                    print(colored(('Number of failed attempts: ' + NetDevices.failed_login_attempts),'red'))
+                    print(colored(('Number of failed attempts: ' + str(NetDevices.failed_login_attempts)),'red'))
                     if (NetDevices.failed_login_attempts > NetDevices.max_failed_login):
                         print(colored('Warning!!! Too many authentication failures, danger of your account being locked out!!!', 'red'))
-                        NetDevices.logger_error('Too many failed authentication' + NetDevices.failed_login_attempts  
+                        NetDevices.logger_error('Too many failed authentication' + str(NetDevices.failed_login_attempts)  
                                       + 'number of failed attempts, script cancelled.')
-                        NetDevices.logger_debug('Too many failed authentication' + NetDevices.failed_login_attempts  
+                        NetDevices.logger_debug('Too many failed authentication' + str(NetDevices.failed_login_attempts)  
                                       + 'number of failed attempts, script cancelled.')
+                        self.remote_conn_pre.close()
+                        NetDevices.event_thread.clear()
+                        # import _thread
+                        # _thread.interrupt_main()
+                        threading.main_thread()
+                        sys.exit()
 
-                        sys.exit('!!!!!!Script will stop!!!!!!')
 
                 except Exception as e:
                     print(colored(("Connection error: [{}]\n Traceback error: {}".format(self.hostname, str(e))),'red'))
@@ -424,6 +434,7 @@ class NetDevices(object):
             NetDevices.logger_debug("\nNumber of threads active: " + str(NetDevices.threadCounter))
 
 
+
     def setCommands(self, *commands):
         self.commandList = [command for command in commands]
 
@@ -535,7 +546,7 @@ class NetDevices(object):
         pass
 
 def main():
-    
+    from getpass import getpass
     threadList = []
 
 
@@ -545,21 +556,36 @@ def main():
     cmd_file.close()
 
 
+    username = input("Enter your username: \n")
+    password = getpass()
+    print("Re-type password:\n")
+    password2 = getpass()
+    while(password!=password2):
+        print("Your password did not match\n")
+        username = input("Enter your username: \n")
+        password = getpass()
+        print("Re-type password:\n")
+        password2 = getpass()
+
+
     with open(sys.argv[1]) as device_file:
         for device in device_file:
             if not device.strip() or device.startswith('#'):
                 continue
             else:
                 currentDevice = device.strip()
-                commodity_sw = NetDevices(hostname=currentDevice, user='georchan', password='cisco',display=False)
+                commodity_sw = NetDevices(hostname=currentDevice, user=username, password=password,display=False)
                 commodity_sw.setCommands(*cmdList)
                 threadList.append(commodity_sw.connect())
+
 
 
         '''lists of threads runs through threads and joins to main '''
         for threadHandle in threadList:
             threadHandle.join()
+            if not NetDevices.event_thread.is_set():
 
+                sys.exit('!!!!!!Script will stop!!!!!!')
 
     NetDevices.displayResults()
 
