@@ -113,10 +113,16 @@ class NetDevices(object):
         import logging
 
         cls.debugLock.acquire()
-
-        if not os.path.exists('./logs/'):
-            os.makedirs('./logs/')
+        try: 
+            os.makedirs('./logs')
             cls.debug_logger.debug('Path created:  ./logs/')
+        except:
+            pass
+
+
+        # if not os.path.exists('./logs/'):
+        #     os.makedirs('./logs/')
+        #     cls.debug_logger.debug('Path created:  ./logs/')
 
         paramiko.util.log_to_file("./logs/paramiko.log")
         try:
@@ -382,8 +388,8 @@ class NetDevices(object):
 
                     for command in self.commandList:
                         self.interact.send(command)
-                        #time.sleep(1)
-                        #self.stdout.append(self.interact.current_output)
+                        time.sleep(1)
+                        self.stdout.append(self.interact.current_output)
                         #print(self.interact.current_output)
                         self.interact.expect(['.*\#', '.*\(y/n\) '])
                         #print(self.interact.current_output)
@@ -574,7 +580,7 @@ def main():
                 continue
             else:
                 currentDevice = device.strip()
-                commodity_sw = NetDevices(hostname=currentDevice, user=username, password=password,display=False)
+                commodity_sw = NetDevices(hostname=currentDevice, user=username, password=password,display=True)
                 commodity_sw.setCommands(*cmdList)
                 threadList.append(commodity_sw.connect())
 
