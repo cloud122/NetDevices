@@ -231,7 +231,7 @@ class NetDevices(object):
 
         return wrapper
 
-    def __init__(self, hostname='generic', model='generic', configs="generic", user = 'admin', password = '',timeout=10,display=True):
+    def __init__(self, hostname='generic', model='generic', configs="generic", user = 'admin', password = '',timeout=10,display=False):
         self.hostname = hostname
         self.model = model
         self.configs = configs
@@ -555,8 +555,35 @@ def main():
     from getpass import getpass
     threadList = []
 
+    '''
+    starting argparser
 
-    with open(sys.argv[2]) as cmd_file:               
+    '''
+
+    import argparse
+    parser = argparse.ArgumentParser(add_help=False)
+
+    parser.add_argument('deviceFile', help='List of hosts file.')
+    parser.add_argument('commandFile', help='List of commands file.')
+
+    parser.add_argument('-d','--display',action='store_true',
+                        help='Display device output to terminal.' )
+    parser.add_argument('-p', '--platform',choices=['network', 'linux','tc'], default='network', 
+                        help='Set host platform. Default set to network.' )
+    parser.add_argument('-t', '--threads',type=int, choices=range(1,11), default=6, 
+                         help='Set number of threads. Default set to 6.')
+
+
+    # parser.add_argument('devicelist',default=sys.argv[1])
+    # parser.add_argument('command',default=sys.argv[2])
+    args = parser.parse_args()
+    sys.stdout.write(str())
+    print('Platform: ',args.platform)
+    print('Threads: ',args.threads)
+    
+
+    #with open(sys.argv[2]) as cmd_file:
+    with open(args.commandFile) as cmd_file:                 
         cmdList = [cmd.strip() for cmd in cmd_file]
                 
     cmd_file.close()
@@ -574,13 +601,14 @@ def main():
         password2 = getpass()
 
 
-    with open(sys.argv[1]) as device_file:
+    #with open(sys.argv[1]) as device_file:
+    with open(args.deviceFile) as device_file:
         for device in device_file:
             if not device.strip() or device.startswith('#'):
                 continue
             else:
                 currentDevice = device.strip()
-                commodity_sw = NetDevices(hostname=currentDevice, user=username, password=password,display=True)
+                commodity_sw = NetDevices(hostname=currentDevice, user=username, password=password,display=args.display)
                 commodity_sw.setCommands(*cmdList)
                 threadList.append(commodity_sw.connect())
 
@@ -595,5 +623,6 @@ def main():
 
     NetDevices.displayResults()
 
+if __name__ == '__main__':
 
-main()
+    main()
